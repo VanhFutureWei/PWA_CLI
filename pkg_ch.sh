@@ -45,6 +45,9 @@ fi
 echo "Installing Bubblewrap on to your system"
 # npm i -g @bubblewrap/cli
 
+echo "checking for JDK and SDK to meet the require version and correct path location"
+# bubblewrap doctor
+
 echo " It's now going to generate an Android project from an existing Web Manifest"
 # bubblewrap init --manifest https://my-twa.com/manifest.json
 
