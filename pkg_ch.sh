@@ -15,8 +15,14 @@ install_npm(){
 
 	npm_ver=$(npm -v)
 	echo "checking your npm vesion"
-	echo "your npm version is: $npm_ver"
-	sudo apt install npm
+	if [ -z $npm_ver ]; then
+		echo "there is no npm install on your system"
+		sudo apt install npm
+	else
+		echo "your npm version is: $npm_ver"
+	fi
+
+	
 }
 
 download_node(){
@@ -31,22 +37,78 @@ install_node(){
 	download_node
 	install_npm
 
-
 }
 
+reading_config_file(){
+	echo "reading data from default config file"
+	echo "setting up JDK and SDK"
+}
+
+building_Android_proj(){
+	echo "I'm building Android project for you"
+	bubblewrap build
+}
 
 install_bubblewrap(){
-	echo "Installing bubblewrap command line"
+	echo "Installing bubblewrap command line..."
+	arg1=$1
+	echo "the manifest is: $arg1"
+
 	source npm i -g @bubblewrap/cli
 	# source npm install -g npm@8.13.1
-	make_android_proj
+
+	echo "generating Android project for you"
+	# bubblewrap init --manifest 
+
+	echo "Please answer a few question"
+	reading_config_file
+
+	bubblewrap init --manifest $arg1
+	# result=$(bubblewrap init --manifest $arg1)
+	# echo "result from running bubblewrap is: $result"
+	building_Android_proj
 }
 
-make_android_proj(){
+create_manifest() {
+	echo " I'm creating simple manifest base on host URL ..."
+
+	install_bubblewrap https://sadchonks.com/manifest.json
+}
+
+make_proj_no_manifest(){
+	echo "Since you don't have the manifest. I will create one for you"
+	create_manifest
+}
+
+make_proj_with_your_manifest(){
+	echo "make Android project..."
+	arg1=$1
+	install_bubblewrap $arg1
+
+}
+
+
+check_manifest() {
+	echo "looking for your manifest "
+
+	FILE=manifest.json
+	if test -f "$FILE"; then
+	    echo "$FILE exists."
+	    make_proj_with_your_manifest $FILE
+	else
+		echo "no manifest.json file on your system"
+		make_proj_no_manifest 
+	fi
+
+}
+
+
+make_Android_proj(){
 	echo "create Android project..."
-	bubblewrap init --manifest https://my-twa.com/manifest.json
-}
 
+	check_manifest
+
+}
 
 check_nodeVersion(){
 	echo "checking your node.js version"
@@ -67,10 +129,9 @@ check_nodeVersion(){
 		# echo " position parameter 1 is: $1 "
 		# echo " position parameter s is: $* "
 		# echo " position parameter s1 is: $# "
-		
-				
+						
 		install_node
-	
+		make_Android_proj	
 
 	else
 		echo "your Node.js is: $node_version"
@@ -89,8 +150,8 @@ check_nodeVersion(){
 			echo "Your node.js version too old Please upgrade to the latest version"
 		elif [[($minor -gt 0)]]; then
 			echo "You are good to go"
-			install_bubblewrap
 
+			make_Android_proj
 		fi
 
 	fi
