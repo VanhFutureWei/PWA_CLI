@@ -1,0 +1,44 @@
+#!/usr/bin/expect -f
+
+spawn bubblewrap init --manifest=https://sadchonks.com/manifest.json
+
+set timeout 20
+expect "? Domain:\r"
+send -- "\r"
+expect "? URL path:\r"
+send -- "\r"
+expect "? Application name:\r"
+send -- "\r"
+expect "? Short name:\r"
+send -- "\r"
+expect "? Application ID:\r"
+send -- "\r"
+expect "? Starting version code for the new app version:\r"
+send -- "\r"
+expect "? Display mode: standalone\r"
+send -- "\r"
+expect "? Orientation: default\r"
+send -- "\r"
+expect "? Status bar color:\r"
+send -- "\r"
+expect "? Splash screen color:\r"
+send -- "\r"
+expect "? Icon URL:\r"
+send -- "\r"
+expect "? Maskable icon URL:\r"
+send -- "\r"
+expect "? Include app shortcuts?\r"
+send -- "\r"
+expect "? Monochrome icon URL:\r"
+send -- "\r"
+expect "? Include support for Play Billing (this relies on alpha dependencies)?\r"
+send -- "\r"
+expect "? Request geolocation permission?\r"
+send -- "\r"
+expect "? Key store location:\r"
+send -- "\r"
+expect "? Key name: android\r"
+send -- "\r"
+
+
+expect eof

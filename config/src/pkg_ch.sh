@@ -1,5 +1,9 @@
 #! /bin/bash
-
+###################################################################################
+# script to create a command line for checking if a site is viable to
+# convert to PWA type app
+#
+###################################################################################
 
 check_bashVersion(){
 	bash_version=$(bash --version)
@@ -39,34 +43,23 @@ install_node(){
 
 }
 
+use_default_setting(){
+# 	echo "generating Android project for you"
+# 	bubblewrap init --manifest 
+
+# 	bubblewrap init --manifest="$arg1" 
+# 	echo "Please answer a few question"
+	default_setting.exp
+ }
+
 reading_config_file(){
 	echo "reading data from default config file"
 	echo "setting up JDK and SDK"
 }
 
-building_Android_proj(){
-	echo "I'm building Android project for you"
-	bubblewrap build
-}
 
 install_bubblewrap(){
-	echo "Installing bubblewrap command line..."
-	arg1=$1
-	echo "the manifest is: $arg1"
-
-	source npm i -g @bubblewrap/cli
-	# source npm install -g npm@8.13.1
-
-	echo "generating Android project for you"
-	# bubblewrap init --manifest 
-
-	echo "Please answer a few question"
-	reading_config_file
-
-	bubblewrap init --manifest $arg1
-	# result=$(bubblewrap init --manifest $arg1)
-	# echo "result from running bubblewrap is: $result"
-	building_Android_proj
+	npm i -g @bubblewrap/cli
 }
 
 create_manifest() {
@@ -75,7 +68,7 @@ create_manifest() {
 	install_bubblewrap https://sadchonks.com/manifest.json
 }
 
-make_proj_no_manifest(){
+make_proj_default_manifest(){
 	echo "Since you don't have the manifest. I will create one for you"
 	create_manifest
 }
@@ -97,18 +90,11 @@ check_manifest() {
 	    make_proj_with_your_manifest $FILE
 	else
 		echo "no manifest.json file on your system"
-		make_proj_no_manifest 
+		make_proj_default_manifest 
 	fi
 
 }
 
-
-make_Android_proj(){
-	echo "create Android project..."
-
-	check_manifest
-
-}
 
 check_nodeVersion(){
 	echo "checking your node.js version"
@@ -131,7 +117,7 @@ check_nodeVersion(){
 		# echo " position parameter s1 is: $# "
 						
 		install_node
-		make_Android_proj	
+		# make_Android_proj	
 
 	else
 		echo "your Node.js is: $node_version"
@@ -151,10 +137,82 @@ check_nodeVersion(){
 		elif [[($minor -gt 0)]]; then
 			echo "You are good to go"
 
-			make_Android_proj
+			# make_Android_proj
 		fi
-
 	fi
+
+}
+
+
+
+check_preRequisite(){
+	check_nodeVersion
+	check_bubblewrap
+	check_manifest
+}
+
+check_bubblewrap(){
+	echo "checking your bubblewrap version..."
+	
+	bubblewrap_version=$(bubblewrap --version)
+	
+	echo " "
+	echo "your current bubblewrap version is: $bubblewrap_version"
+	if [ -z "$bubblewrap_version" ]; then 
+		echo $?
+		echo "you don't have bubblewrap install"
+		echo "I'm going to install bubblewrap "
+			install_bubblewrap
+		# make_Android_proj	
+
+	else
+		echo "your bubblewrap_version is: $bubblewrap_version"
+
+		# maj=${bubblewrap_version:1:2}
+		# echo "major: $maj"
+		# minor=${bubblewrap_version:4:1}
+		# echo "minor: $minor"
+
+		# if [[($maj -lt 12)]]; then
+		# 	echo "Your node.js version too old Please upgrade to the latest version"
+		# elif [[($minor -gt 0)]]; then
+		# 	echo "You are good to go"
+
+		# 	# make_Android_proj
+		# fi
+	fi
+}
+
+building_Android_proj(){
+
+	echo "Installing bubblewrap command line..."
+	arg1=$1
+	echo "the manifest is: $arg1"
+
+	# source npm i -g @bubblewrap/cli
+	# source npm install -g npm@8.13.1
+
+	# echo "generating Android project for you"
+	# bubblewrap init --manifest 
+
+	# bubblewrap init --manifest="$arg1" 
+	# echo "Please answer a few question"
+	# reading_config_file
+
+	# bubblewrap init --manifest $arg1
+	# result=$(bubblewrap init --manifest $arg1)
+	# echo "result from running bubblewrap is: $result"
+	# building_Android_proj
+
+	echo "I'm building Android project for you"
+	bubblewrap build
+}
+
+
+make_Android_proj(){
+	echo "create Android project..."
+
+	building_Android_proj
 
 }
 
@@ -179,50 +237,14 @@ echo "Today is: $today "
 echo " "
 
 check_bashVersion
-check_nodeVersion
+check_preRequisite
+
+make_Android_proj
+
+# reading_config_file
 
 
 
-# echo "checking your node.js version"
-# node_version=`node --version |awk 'NR==1{gsub("v",""); print $1 }'`
-# # export NODE_VERSION
-# # echo $NODE_VERSION
-# echo "your current node version is: $node_version"
-# if [[ -z "$node_version" ]];then
-# 	echo "you don't have node install"
-# else
-# 	echo "your Node.js is: $node_version"
-
-# 	# cut -c 1-2 <<< $NODE_VERSION
-# 	# echo "major value is $maj"
-# 	# cut -c 3 <<< $NODE_VERSION
-# 	# echo "minor value is $minor"
-
-# 	maj=${node_version:0:2}
-# 	echo "major: $maj"
-# 	minor=${node_version:3:1}
-# 	echo "minor: $minor"
-
-# 	if [[($maj -lt 12)]]; then
-# 		echo "Your node.js version too old Please upgrade to the latest version"
-# 	elif [[($minor -gt 0)]]; then
-# 		echo "You are good to go"
-
-# 		echo "Installing Bubblewrap on to your system"
-# 		# npm i -g @bubblewrap/cli
-
-# 		echo "bubblewrap: "
-# 		echo "JDK version 8 lower or higher version is not compatible"
-# 		echo "checking for correct path location"
-# 		# bubblewrap doctor
-
-# 		echo " It's now going to generate an Android project from an existing Web Manifest"
-# 		# bubblewrap init --manifest https://my-twa.com/manifest.json
-
-# 	fi
-
-
-# fi
 
 
 
