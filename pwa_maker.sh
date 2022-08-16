@@ -1,0 +1,299 @@
+#!/bin/bash
+###################################################################################
+# script to create a command line for checking if a site is viable to
+# convert to PWA type app
+#
+###################################################################################
+
+
+# VERSION="1.0"
+# SCRIPT_NAME=$(basename "$0")
+# OUTPUT_DIR="$HOME/pwa_maker"
+
+# check_bashVersion(){
+# 	bash_version=$(bash --version)
+# 	echo "your bash version is: $bash_version"
+
+# 	bash_path=$(which bash)
+# 	echo " "
+# 	echo "your bash path is: $bash_path"
+	
+# }
+
+install_npm(){
+
+	npm_ver=$(npm -v)
+	echo "checking your npm vesion"
+	if [ -z $npm_ver ]; then
+		echo "there is no npm install on your system"
+		sudo apt install npm
+	else
+		echo "your npm version is: $npm_ver"
+	fi
+
+	
+}
+
+download_node(){
+	echo "downloading node.js from the internet..."
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+	#sudo apt install nodejs
+}
+
+install_node(){
+
+	echo "Installing node.js begun..."
+	download_node
+	install_npm
+
+}
+
+use_default_setting(){
+# 	echo "generating Android project for you"
+# 	bubblewrap init --manifest 
+
+# 	bubblewrap init --manifest="$arg1" 
+# 	echo "Please answer a few question"
+	default_setting.exp
+ }
+
+reading_config_file(){
+	echo "reading data from default config file"
+	echo "setting up JDK and SDK"
+}
+
+
+install_bubblewrap(){
+	npm i -g @bubblewrap/cli
+}
+
+create_manifest() {
+	echo " I'm creating simple manifest base on host URL ..."
+
+	install_bubblewrap https://sadchonks.com/manifest.json
+}
+
+make_proj_default_manifest(){
+	echo "Since you don't have the manifest. I will create one for you"
+	create_manifest
+}
+
+make_proj_with_your_manifest(){
+	echo "make Android project..."
+	arg1=$1
+	install_bubblewrap $arg1
+
+}
+
+
+check_manifest() {
+	echo "looking for your manifest "
+
+	FILE=manifest.json
+	if test -f "$FILE"; then
+	    echo "$FILE exists."
+	    make_proj_with_your_manifest $FILE
+	else
+		echo "no manifest.json file on your system"
+		make_proj_default_manifest 
+	fi
+
+}
+
+
+check_nodeVersion(){
+	echo "checking your node.js version"
+	# node_version=`node --version |awk 'NR==1{gsub("v",""); print $1 }'`
+
+	node_version=$(node --version)
+	echo -n "the value is: ${node_version:- "no node.js found on this system"}"
+	# export NODE_VERSION
+	# echo $NODE_VERSION
+	echo " "
+
+	echo "your current node version is: $node_version"
+	if [ -z "$node_version" ]; then 
+		echo $?
+		echo "you don't have node install"
+		echo "I'm going to install node "
+		# echo " position parameter 0 is: $0 "
+		# echo " position parameter 1 is: $1 "
+		# echo " position parameter s is: $* "
+		# echo " position parameter s1 is: $# "
+						
+		install_node
+		# make_Android_proj	
+
+	else
+		echo "your Node.js is: $node_version"
+
+		# cut -c 1-2 <<< $NODE_VERSION
+		# echo "major value is $maj"
+		# cut -c 3 <<< $NODE_VERSION
+		# echo "minor value is $minor"
+
+		maj=${node_version:1:2}
+		echo "major: $maj"
+		minor=${node_version:4:1}
+		echo "minor: $minor"
+
+		if [[($maj -lt 12)]]; then
+			echo "Your node.js version too old Please upgrade to the latest version"
+		elif [[($minor -gt 0)]]; then
+			echo "You are good to go"
+
+			# make_Android_proj
+		fi
+	fi
+
+}
+
+
+
+check_preRequisite(){
+	check_nodeVersion
+	check_bubblewrap
+	check_manifest
+}
+
+check_bubblewrap(){
+	echo "checking your bubblewrap version..."
+	
+	bubblewrap_version=$(bubblewrap --version)
+	
+	echo " "
+	echo "your current bubblewrap version is: $bubblewrap_version"
+	if [ -z "$bubblewrap_version" ]; then 
+		echo $?
+		echo "you don't have bubblewrap install"
+		echo "I'm going to install bubblewrap "
+			install_bubblewrap
+		# make_Android_proj	
+
+	else
+		echo "your bubblewrap_version is: $bubblewrap_version"
+
+		# maj=${bubblewrap_version:1:2}
+		# echo "major: $maj"
+		# minor=${bubblewrap_version:4:1}
+		# echo "minor: $minor"
+
+		# if [[($maj -lt 12)]]; then
+		# 	echo "Your node.js version too old Please upgrade to the latest version"
+		# elif [[($minor -gt 0)]]; then
+		# 	echo "You are good to go"
+
+		# 	# make_Android_proj
+		# fi
+	fi
+}
+
+building_Android_proj(){
+
+	echo "Installing bubblewrap command line..."
+	arg1=$1
+	echo "the manifest is: $arg1"
+
+	# source npm i -g @bubblewrap/cli
+	# source npm install -g npm@8.13.1
+
+	# echo "generating Android project for you"
+	# bubblewrap init --manifest 
+
+	# bubblewrap init --manifest="$arg1" 
+	# echo "Please answer a few question"
+	# reading_config_file
+
+	# bubblewrap init --manifest $arg1
+	# result=$(bubblewrap init --manifest $arg1)
+	# echo "result from running bubblewrap is: $result"
+	# building_Android_proj
+
+	echo "I'm building Android project for you"
+	bubblewrap build
+}
+
+# Keep readlinkf function
+readlinkf() {
+    [ "${1:-}" ] || return 1
+    max_symlinks=40
+    CDPATH='' # to avoid changing to an unexpected directory
+
+    target=$1
+    [ -e "${target%/}" ] || target=${1%"${1##*[!/]}"} # trim trailing slashes
+    [ -d "${target:-/}" ] && target="$target/"
+
+    cd -P . 2>/dev/null || return 1
+    while [ "$max_symlinks" -ge 0 ] && max_symlinks=$((max_symlinks - 1)); do
+        if [ ! "$target" = "${target%/*}" ]; then
+            case $target in
+            /*) cd -P "${target%/*}/" 2>/dev/null || break ;;
+            *) cd -P "./${target%/*}" 2>/dev/null || break ;;
+            esac
+            target=${target##*/}
+        fi
+
+        if [ ! -L "$target" ]; then
+            target="${PWD%/}${target:+/}${target}"
+            printf '%s\n' "${target:-/}"
+            return 0
+        fi
+        link=$(ls -dl -- "$target" 2>/dev/null) || break
+        target=${link#*" $target -> "}
+    done
+    return 1
+}
+
+
+make_Android_proj(){
+	echo "create Android project..."
+
+	building_Android_proj
+
+}
+
+
+
+################################################################################################
+# script start here this is the main() entry point
+# bash script execute line by line start from first line to the last non comment line
+
+clear
+
+echo " "
+echo "------------------------------------------------------------------------------------ "
+echo "this script will detect the Node.JS and npm present in your system"
+echo "it's also check to see if they meet the requirement of Node.js version 12.0 or above"
+echo "When running Bubblewrap for the first time"
+echo "it will offer to automatically download and install external dependencies"
+echo "-------------------------------------------------------------------------------------"
+echo " "
+
+today=$(date )
+echo "Today is: $today "
+echo " "
+
+
+self=$(readlinkf "$0")
+script_dir=${self%/*}
+{
+	. "${script_dir}/lib/check_bash.sh"
+}
+
+check_bashVersion
+check_preRequisite
+
+#make_Android_proj
+
+# reading_config_file
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+#!/usr/bin/expect -f
+
+
+# set timeout -1
+# spawn bubblewrap init --manifest=https://sadchonks.com/manifest.json
+# spawn ./pkg_ch.sh
+# interact ++ return
+# send -- "\r"
+# set timeout 5
+# expect "? Domain: (sadchonks.com)\r"
+# send -- "\r"
+# expect "? URL path:\r"
+# send -- "/saved\r"
+# expect "? Application name:\r"
+# send -- "Sad Chonks\r"
+# expect "? Short name:\r"
+# send -- "Chonks\r"
+# expect "? Application ID:\r"
+# send -- " com.sadchonks.twa\r"
+# expect "? Starting version code for the new app version:\r"
+# send -- "1\r"
+# expect "? Display mode: standalone\r"
+# send -- "\r"
+# expect "? Orientation: default\r"
+# send -- "\r"
+# expect "? Status bar color:\r"
+# send -- "#3F51B5\r"
+# expect "? Splash screen color:\r"
+# send -- "#3F51B5\r"
+# expect "? Icon URL:\r"
+# send -- "https://sadchonks.com/kitteh-512.png\r"
+# expect "? Maskable icon URL:\r"
+# send -- "\r"
+# expect "? Include app shortcuts?\r"
+# send -- "Yes\r"
+# expect "? Monochrome icon URL:\r"
+# send -- "\r"
+# expect "? Include support for Play Billing (this relies on alpha dependencies)?\r"
+# send -- "No\r"
+# expect "? Request geolocation permission?\r"
+# send -- "No\r"
+# expect "? Key store location:\r"
+# send -- "/home/vanh/android.keystore\r"
+# expect "? Key name: android\r"
+# send -- "\r"
+
+expect eof

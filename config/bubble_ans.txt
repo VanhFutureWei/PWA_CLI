@@ -1,0 +1,21 @@
+
+Domain: Sadchonks.com
+URL path: /saved
+Application name: Sad Chonks
+short name: chonks
+Application ID: com.sadchonks.twa
+starting version code for new app version: 1
+display mode: standalone
+Orientation: default
+Status Bar color: #3F5iB5
+Splash screen color: #3F51B5
+Icon URL: https://sadchonks.com/hitteh_h-512.png
+Maskable icon URL:()
+Include app shortcut y/n: y
+monochrome icon URL: ()
+Include support for play billing (this relies on alpha dependency)? y/n: y
+Request geolocation permission: y
+Keystore location:(home/vanh/android.keystore)
+Keystore name: (android)
+Password for keystore: 123456
+Password for key: 123456
