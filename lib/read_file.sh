@@ -1,4 +1,5 @@
-#! /bin/bash
+MODULE="readfile"
+TITLE=${MODULE^^}
 
 function reading_file_from_cli(){	
 	# read -p "Enter file name: "  filename

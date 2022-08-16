@@ -1,5 +1,7 @@
 # User Guide
 
+This document may be used as GitHub pages
+
 ## Introduction
 This script is intended to be used to check if a Web site is suitable to be converted to
 PWA app. A PWA is an Android app that creates from the web site.
