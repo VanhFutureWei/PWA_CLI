@@ -1,0 +1,54 @@
+{
+  "packageId": "com.sadchonks.twa",
+  "host": "sadchonks.com",
+  "name": "Sad Chonks",
+  "launcherName": "Chonks",
+  "display": "standalone",
+  "themeColor": "#3F51B5",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#3F51B5",
+  "enableNotifications": true,
+  "startUrl": "/saved",
+  "iconUrl": "https://sadchonks.com/kitteh-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "/home/vanh/PWA/PWA_CLI/android.keystore",
+    "alias": "android"
+  },
+  "appVersionName": "1",
+  "appVersionCode": 1,
+  "shortcuts": [
+    {
+      "name": "New Chonks",
+      "shortName": "New",
+      "url": "https://sadchonks.com/?shortcut",
+      "chosenIconUrl": "https://sadchonks.com/favicon.png"
+    },
+    {
+      "name": "Saved Chonks",
+      "shortName": "Saved",
+      "url": "https://sadchonks.com/saved?shortcut",
+      "chosenIconUrl": "https://sadchonks.com/favicon.png"
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://sadchonks.com/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://sadchonks.com/",
+  "minSdkVersion": 19,
+  "orientation": "default",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "appVersion": "1"
+}

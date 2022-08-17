@@ -84,6 +84,11 @@ function reading_config_from_file(){
 		done < $file
 }
 
+reading_config_file(){
+	echo "reading data from default config file"
+	echo "setting up JDK and SDK"
+}
+
 # reading_config_from_file
 # reading_file_from_cli
 # reading_config_from_file
