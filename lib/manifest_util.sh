@@ -14,7 +14,13 @@
 create_manifest() {
 	echo " I'm creating simple manifest base on host URL ..."
 
-	# install_bubblewrap https://sadchonks.com/manifest.json
+	#  create a manifest.json file
+	#  using simple default setting here
+	#  then create android project with that manifest file
+
+
+	# building_Android_proj
+	
 }
 
 make_proj_default_manifest(){
@@ -23,9 +29,9 @@ make_proj_default_manifest(){
 }
 
 make_proj_with_your_manifest(){
-	echo "make Android project..."
+	echo "make Android project with your manifest ..."
 	arg1=$1
-	install_bubblewrap $arg1
+	# building_Android_proj
 
 }
 

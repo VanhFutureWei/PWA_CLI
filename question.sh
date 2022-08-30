@@ -1,6 +1,5 @@
-#!/usr/bin/expect -f
+#!/usr/bin/env bash
 
-spawn ./pwa_req_ch.sh
 
 set timeout 5
 expect "? Domain:\r"
@@ -38,25 +37,4 @@ send -- "\r"
 expect "? Key store location:\r"
 send -- "\r"
 expect "? Key name: android\r"
-send -- "\r"
-
-
-# bubblewrap build
-# expect "? Password for the Key Store:\r"
-# send -- "123456\r"
-# expect "? Password for the Key:\r"
-# send -- "123456\r"
-
-# ? Do you want to create one now? Yes
-# expect "? First and Last names (eg: John Doe):\r"
-# send -- " John Doe\r"
-# expect "? Organizational Unit (eg: Engineering Dept):\r"
-# send -- "Eng\r"
-# expect "? Organization (eg: Company Name):\r"
-# send -- "Temp\r"
-# expect "? Country (2 letter code):\r"
-# send -- "us\r"
-
-
-
-expect eof
+send -- "123456\r"

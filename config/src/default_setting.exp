@@ -2,7 +2,7 @@
 
 spawn bubblewrap init --manifest=https://sadchonks.com/manifest.json
 
-set timeout 20
+set timeout 10
 expect "? Domain:\r"
 send -- "\r"
 expect "? URL path:\r"
