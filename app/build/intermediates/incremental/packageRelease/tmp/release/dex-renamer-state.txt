@@ -1,4 +1,4 @@
-#Tue Aug 16 15:41:27 PDT 2022
+#Tue Aug 30 12:01:47 PDT 2022
 base.0=/home/vanh/PWA/PWA_CLI/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

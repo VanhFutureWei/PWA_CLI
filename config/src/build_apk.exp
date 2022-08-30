@@ -1,0 +1,13 @@
+
+#!/usr/bin/expect -f
+
+spawn bubblewrap build 
+
+
+expect "? Password for the Key Store:\r"
+send -- "123456\r"
+expect "? Password for the Key:\r"
+send -- "123456\r"
+
+
+expect eof

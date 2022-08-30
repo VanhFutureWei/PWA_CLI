@@ -98,8 +98,8 @@ androidx.annotation.WorkerThread
 androidx.core.graphics.TypefaceCompatBaseImpl$2
 androidx.core.view.accessibility.AccessibilityManagerCompat
 androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplJellybeanMr2
-androidx.core.content.PermissionChecker
 androidx.browser.customtabs.CustomTabsSession$MockSession
+androidx.core.content.PermissionChecker
 com.google.androidbrowserhelper.R$attr
 android.support.customtabs.trusted.ITrustedWebActivityCallback$Stub:
     public void <init>()
@@ -231,8 +231,8 @@ androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationA
 androidx.core.view.inputmethod.InputConnectionCompat
 androidx.core.app.NotificationCompat$Style
 androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1
-androidx.core.content.pm.ShortcutInfoCompatSaver
 androidx.core.widget.NestedScrollView$AccessibilityDelegate
+androidx.core.content.pm.ShortcutInfoCompatSaver
 com.sadchonks.twa.R$drawable
 androidx.core.content.ContextCompat:
     protected void <init>()
@@ -690,8 +690,8 @@ android.support.customtabs.trusted.ITrustedWebActivityService$Stub:
     static final int TRANSACTION_getSmallIconId
     static final int TRANSACTION_getSmallIconBitmap
     static final int TRANSACTION_extraCommand
-androidx.core.app.ShareCompat
 androidx.core.content.SharedPreferencesCompat$EditorCompat
+androidx.core.app.ShareCompat
 androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16
 androidx.core.view.NestedScrollingParent
 androidx.core.app.NotificationCompat$Extender
