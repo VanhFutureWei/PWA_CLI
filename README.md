@@ -1,19 +1,22 @@
 # PWA_CLI
 
-A script to generate an Android APK from a web site. It's simplify the process of detecting user environment and generating Android APK with just a few keystoke from console. 
+A script to generate an Android APK from a web site. It's simplify the process of detecting web site environment for suitability and generating Android APK with just a few keystoke from console command line by simply run the script. 
 
 ## Prerequisite
     - Node.js version 12 or later
-    - npm must be present
-    - Bubblewrap cli must be present
+    - npm must be installed
+    - Bubblewrap cli must be installed
     - JDK and SDK must be present
+    - Web site must have manifest.json present
 
-This script will try to download and install the appropriate version  of the prerequisite from the internet if one is not available or not meet the require version 
+This script will try to download and install the appropriate version of the prerequisite from the internet if one is not available or not meet the requirement
 
-specifically:
-- It's try to detect the present of node.js and its version. 
-- It's try to detect if npm is installed 
-- It's also try to detect bubblewrap cli present in the environment.
+ specifically:
+ 
+    - It's try to detect the present of node.js and determine if the version meet the requirement.
+    - It's try to detect if npm is installed 
+    - It's try to detect bubblewrap cli present in the environment.
+    - It's also try to detect manifest.json is present
 
 
 ## Usage
@@ -23,8 +26,8 @@ install WSL if not already present.
 run the bash shell then type ./runall.exp you should see output flash by and the end you should see 
 
 Building the Android App...
--   Generated Android APK at ./app-release-signed.apk
--   Generated Android App Bundle at ./app-release-bundle.aab
+-   Generated Android APK at *./app-release-signed.apk*
+-   Generated Android App Bundle at *./app-release-bundle.aab*
 
 You may copy the APK to install on your phone.
 
