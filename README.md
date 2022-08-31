@@ -5,7 +5,7 @@
 - [Introduction](#introduction)
 - [Usage](#usage)
 - [Limitation](#limitation)
-- [Work in progresss](#work_in_progress)
+- [Work in progresss](#work-in-progress)
 - [License](#license)
 - [Disclaimer](#disclaimer)
 
@@ -51,7 +51,7 @@ the script can be run directly in the console terminal with the command ./runall
 Currently only test on Window 10 WSL and Windows command prompt.
 - Web site must have manifest.json present
 
-## Work_in_progress
+## Work in progress
 
 auto-generate manifest.json if one not present.
 
