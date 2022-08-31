@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Prerequisite](#prerequisite)
 - [Usage](#usage)
 - [Limitation](#limitation)
 - [Work in progresss](#work-in-progress)
