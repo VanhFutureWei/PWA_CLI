@@ -1,4 +1,5 @@
 # PWA_CLI
+
 A script to generate an Android APK from a web site. It's simplify the process of detecting user environment and generating Android APK with just a few keystoke from console. 
 
 ## Prerequisite
@@ -47,3 +48,10 @@ see [LICENSE](./LICENSE.md) for more info
 
 ## Disclaimer
 This is not an officially supported Futurewei product
+=======
+
+A script to generate and build Android APK/ app bundle from a web site.
+It's simplify the process of detecting Node.js and npm on a system
+the script will attempt to install Node.js if it not present on the system
+then install bubblewrap inorder to generate and build the APK for a web site.
+
