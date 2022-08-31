@@ -1,5 +1,15 @@
 # PWA_CLI
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Usage](#usage)
+- [Limitation](#limitation)
+- [Work in progresss](#work_in_progress)
+- [License](#license)
+- [Disclaimer](#disclaimer)
+
+## Introduction
 A script to generate an Android APK from a web site. It's simplify the process of detecting web site environment for suitability and generating Android APK with just a few keystoke from console command line by simply run the script. 
 
 ## Prerequisite
@@ -41,7 +51,7 @@ the script can be run directly in the console terminal with the command ./runall
 Currently only test on Window 10 WSL and Windows command prompt.
 - Web site must have manifest.json present
 
-## Work in progress
+## Work_in_progress
 
 auto-generate manifest.json if one not present.
 
