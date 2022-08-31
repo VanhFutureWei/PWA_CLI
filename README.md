@@ -23,7 +23,7 @@ This script will try to download and install the appropriate version of the prer
 
 ### On Window 10
 install WSL if not already present.
-run the bash shell then type ./runall.exp you should see output flash by and the end you should see 
+run the bash shell then type ./runall.exp you should see output flash by at the end you should see 
 
 Building the Android App...
 -   Generated Android APK at *./app-release-signed.apk*
