@@ -49,11 +49,11 @@ the script can be run directly in the console terminal with the command ./runall
 ## Limitation
 
 Currently only test on Window 10 WSL and Windows command prompt.
-- Web site must have manifest.json present
+- Web site must have manifest.json file present
 
 ## Work in progress
 
-auto-generate manifest.json if one not present.
+auto-generate manifest.json file if one not present.
 
 ## License
 see [LICENSE](./LICENSE.md) for more info
