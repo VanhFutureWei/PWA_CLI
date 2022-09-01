@@ -45,6 +45,7 @@ You may copy the APK to install on your phone.
 ### On Linux and MacOS
 
 the script can be run directly in the console terminal with the command ./makeapk.exp
+FYI: these files are in Unix line ending format LF instead of Windows CRLF, you can check by looking at the status bar on vscode
 
 
 ## Limitation
