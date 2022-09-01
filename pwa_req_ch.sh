@@ -82,6 +82,7 @@ self=$(readlinkf "$0")
 script_dir=${self%/*}
 {
 	. "${script_dir}/lib/check_bash.sh"
+    . "${script_dir}/lib/check_expect.sh"
 	. "${script_dir}/lib/check_node_npm.sh"
 	. "${script_dir}/lib/manifest_util.sh"
 	. "${script_dir}/lib/check_bubblewrap.sh"
@@ -89,7 +90,8 @@ script_dir=${self%/*}
 }
 
 check_bashVersion
-check_preRequisite
+check_expectVersion
+# check_preRequisite
 
 # make_Android_proj
 
